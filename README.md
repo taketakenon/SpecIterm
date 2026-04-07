@@ -122,3 +122,24 @@
 - UXは「短い・迷わない・すぐ終わる」を基準にする
 - 復習アルゴリズムは、初期はシンプルな忘却曲線モデルから開始し段階的に改善する
 - データ構造は将来のジャンル追加・言語ペア追加に耐えられる形で設計する
+
+---
+
+## リポジトリ移行メモ（`SpecIterm` → `SpecItermS`）
+
+`SpecIterm` の内容を `SpecItermS` に移すときは、履歴ごと移行できる **mirror push** を使う。
+
+```bash
+# 旧リポジトリを bare clone（履歴を含めて丸ごと取得）
+git clone --bare https://github.com/taketakenon/SpecIterm.git
+cd SpecIterm.git
+
+# 新リポジトリへ履歴ごと反映
+git push --mirror https://github.com/taketakenon/SpecItermS.git
+```
+
+移行後に必要であれば、旧リポジトリ側で以下を実施する。
+
+- README に移行先（`SpecItermS`）への案内を追記
+- 旧リポジトリを Archive 化（誤更新防止）
+- GitHub Settings で default branch / Topics / Secrets を新リポジトリに揃える
